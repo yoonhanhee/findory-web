@@ -25,7 +25,7 @@ const upload = multer({
     storage: storage
 });
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 
@@ -457,6 +457,6 @@ app.get("/logout", function (req, res) {
 
 app.listen(port, function () {
 
-    console.log("서버 실행 중: http://localhost:" + port);
+    console.log("서버 실행 중");
 
 });
