@@ -76,13 +76,13 @@
 
                     <div class="cover-preview" id="coverPreview">
 
-                        <% if(book && book.coverImage){ %>
+                        <% if(book && book.coverImage && book.coverImage !== "/images/default-book.png"){ %>
 
                             <img src="<%= book.coverImage %>" alt="책 표지 미리보기">
 
                         <% } else { %>
 
-                            <span>📚</span>
+                            <strong class="book-placeholder">BOOK</strong>
 
                         <% } %>
 

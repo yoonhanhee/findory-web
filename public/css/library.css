@@ -109,14 +109,6 @@
     border-radius:inherit;
 }
 
-.book-cover img[src="/images/default-book.png"]{
-    display:none;
-}
-
-.book-cover:has(img[src="/images/default-book.png"])::after{
-    content:"BOOK";
-}
-
 .book-info{
     flex:1;
     min-width:0;

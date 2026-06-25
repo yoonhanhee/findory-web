@@ -81,9 +81,15 @@
 
                         <div class="book-cover">
 
-                            <img
-                                src="<%= book.coverImage ? book.coverImage : '/images/default-book.png' %>"
-                                alt="책 표지">
+                            <% if(book.coverImage && book.coverImage !== "/images/default-book.png"){ %>
+
+                                <img src="<%= book.coverImage %>" alt="책 표지">
+
+                            <% } else { %>
+
+                                BOOK
+
+                            <% } %>
 
                         </div>
 

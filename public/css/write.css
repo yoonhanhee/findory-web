@@ -45,6 +45,12 @@
     color: #7d582b;
 }
 
+.book-placeholder{
+    color:#58371b;
+    font-size:16px;
+    font-weight:800;
+}
+
 /* Input */
 
 .form-grid {
