@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Findory | 상세보기</title>
+
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/detail.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        <a href="/home">
+            <img src="/images/logo.png" alt="Findory Logo">
+        </a>
+
+    </div>
+
+    <nav class="nav">
+
+        <a href="/home">홈</a>
+        <a href="/write">기록</a>
+        <a href="/search">검색</a>
+        <a href="/library">서재</a>
+        <a href="/logout">로그아웃</a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="detail-page">
+
+    <section class="detail-title">
+
+        <p class="sub-title">
+
+            Findory Detail
+
+        </p>
+
+        <h1>
+
+            독서 기록 상세보기
+
+        </h1>
+
+    </section>
+
+
+
+    <section class="detail-card">
+
+        <div class="book-cover">
+
+            <img
+                src="<%= book.coverImage ? book.coverImage : '/images/default-book.png' %>"
+                alt="책 표지">
+
+        </div>
+
+
+
+        <div class="detail-info">
+
+            <h2>
+
+                <%= book.title %>
+
+            </h2>
+
+            <h4>
+
+                <%= book.author %>
+
+            </h4>
+
+            <div class="star">
+
+                ⭐ <%= book.star %>
+
+            </div>
+
+
+
+            <div class="info-grid">
+
+                <div class="info-box">
+
+                    <strong>📚 장르</strong>
+
+                    <span>
+
+                        <%= book.genre %>
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-box">
+
+                    <strong>😊 감정</strong>
+
+                    <span>
+
+                        <%= book.emotion %>
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-box">
+
+                    <strong>🌤 날씨</strong>
+
+                    <span>
+
+                        <%= book.weather %>
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="info-box">
+
+                    <strong>🕒 시간대</strong>
+
+                    <span>
+
+                        <%= book.time %>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="review-box">
+
+                <h3>
+
+                    감상평
+
+                </h3>
+
+                <p>
+
+                    <%= book.review %>
+
+                </p>
+
+            </div>
+
+
+
+            <div class="button-group">
+
+                <button
+                    class="edit-btn"
+                    onclick="location.href='/edit/<%= index %>'">
+
+                    수정하기
+
+                </button>
+
+                <button
+                    class="delete-btn"
+                    data-index="<%= index %>">
+
+                    삭제하기
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<div class="delete-modal" id="deleteModal">
+
+    <div class="modal-box">
+
+        <h3>기록을 삭제할까요?</h3>
+
+        <p>삭제한 독서 기록은 다시 되돌릴 수 없습니다.</p>
+
+        <div class="modal-buttons">
+
+            <button class="cancel-btn" id="cancelDelete">취소</button>
+
+            <button class="real-delete-btn" id="realDelete">삭제하기</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/detail.js"></script>
+
+</body>
+
+</html>

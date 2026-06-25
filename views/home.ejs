@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Findory | 홈</title>
+
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/home.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        <a href="/home">
+            <img src="/images/logo.png" alt="Findory Logo">
+        </a>
+
+    </div>
+
+    <nav class="nav">
+
+        <a href="/home" class="active">홈</a>
+        <a href="/write">기록</a>
+        <a href="/search">검색</a>
+        <a href="/library">서재</a>
+        <a href="/logout">로그아웃</a>
+
+    </nav>
+
+</header>
+
+<main class="home-page">
+
+    <section class="home-hero">
+
+        <div>
+
+            <p class="sub-title">
+
+                Findory Home
+
+            </p>
+
+            <h1>
+
+                <%= user.id %>님,<br>
+                오늘은 어떤 이야기를 기록할까요?
+
+            </h1>
+
+            <p class="home-desc">
+
+                감정과 상황으로 저장한 독서 기록을
+                언제든 다시 찾아보세요.
+
+            </p>
+
+        </div>
+
+        <div class="hero-card">
+
+            <p>나의 독서 기록</p>
+
+            <strong>
+
+                <%= user.books.length %>
+
+            </strong>
+
+            <span>권 저장됨</span>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="quick-menu">
+
+        <a href="/write" class="menu-card">
+
+            <span>✍</span>
+
+            <h3>기록하기</h3>
+
+            <p>
+
+                새로운 독서 기록을 남겨보세요.
+
+            </p>
+
+        </a>
+
+
+
+        <a href="/search" class="menu-card">
+
+            <span>🔍</span>
+
+            <h3>검색하기</h3>
+
+            <p>
+
+                감정과 상황으로 기록을 찾아보세요.
+
+            </p>
+
+        </a>
+
+
+
+        <a href="/library" class="menu-card">
+
+            <span>📚</span>
+
+            <h3>서재</h3>
+
+            <p>
+
+                저장한 모든 독서 기록을 확인합니다.
+
+            </p>
+
+        </a>
+
+    </section>
+
+
+
+    <section class="recent-section">
+
+        <div class="section-title">
+
+            <h2>
+
+                최근에 추가한 기록
+
+            </h2>
+
+            <a href="/library">
+
+                전체 보기
+
+            </a>
+
+        </div>
+
+
+
+        <% if(user.books.length===0){ %>
+
+            <div class="empty-box">
+
+                <p>
+
+                    아직 기록된 책이 없습니다.
+
+                </p>
+
+                <a href="/write">
+
+                    첫 기록 작성하기
+
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="recent-list">
+
+                <% user.books.slice(-4).reverse().forEach(function(book,index){ %>
+
+                    <div
+                        class="book-card recent-book"
+                        data-index="<%= user.books.length-1-index %>">
+
+                        <div class="book-cover">
+
+                            <img
+                                src="<%= book.coverImage ? book.coverImage : '/images/default-book.png' %>"
+                                alt="책 표지">
+
+                        </div>
+
+                        <div class="book-info">
+
+                            <h3>
+
+                                <%= book.title %>
+
+                            </h3>
+
+                            <p>
+
+                                <%= book.author %>
+
+                            </p>
+
+                            <div class="tag-box">
+
+                                <span>
+
+                                    <%= book.genre %>
+
+                                </span>
+
+                                <span>
+
+                                    <%= book.emotion %>
+
+                                </span>
+
+                            </div>
+
+                            <div class="star-text">
+
+                                ⭐
+
+                                <%= book.star %>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } %>
+
+    </section>
+
+</main>
+
+<script src="/js/home.js"></script>
+
+</body>
+
+</html>

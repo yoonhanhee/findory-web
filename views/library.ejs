@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Findory | 서재</title>
+
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/library.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        <a href="/home">
+            <img src="/images/logo.png" alt="Findory Logo">
+        </a>
+
+    </div>
+
+    <nav class="nav">
+        <a href="/home">홈</a>
+        <a href="/write">기록</a>
+        <a href="/search">검색</a>
+        <a href="/library" class="active">서재</a>
+        <a href="/logout">로그아웃</a>
+    </nav>
+
+</header>
+
+<main class="library-page">
+
+    <section class="library-title">
+
+        <p class="sub-title">Findory Library</p>
+
+        <h1>
+            <%= user.id %>님의<br>
+            독서 기록 서재
+        </h1>
+
+        <p>
+            지금까지 저장한 독서 경험을 한 곳에서 모아볼 수 있습니다.
+        </p>
+
+    </section>
+
+    <section class="library-section">
+
+        <div class="section-title">
+
+            <h2>전체 기록</h2>
+            <span><%= user.books.length %>개의 기록</span>
+
+        </div>
+
+        <% if(user.books.length === 0){ %>
+
+            <div class="empty-box">
+
+                <p>아직 저장된 독서 기록이 없습니다.</p>
+                <a href="/write">기록하러 가기</a>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="library-grid">
+
+                <% user.books.slice().reverse().forEach(function(book, index){ %>
+
+                    <div
+                        class="library-card"
+                        data-index="<%= user.books.length - 1 - index %>">
+
+                        <div class="book-cover">
+
+                            <img
+                                src="<%= book.coverImage ? book.coverImage : '/images/default-book.png' %>"
+                                alt="책 표지">
+
+                        </div>
+
+                        <div class="book-info">
+
+                            <h3><%= book.title %></h3>
+                            <p><%= book.author %></p>
+
+                            <div class="tag-box">
+                                <span><%= book.genre %></span>
+                                <span><%= book.emotion %></span>
+                                <span><%= book.weather %></span>
+                                <span><%= book.time %></span>
+                            </div>
+
+                            <div class="star-text">
+                                ⭐ <%= book.star %>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } %>
+
+    </section>
+
+</main>
+
+<script src="/js/library.js"></script>
+
+</body>
+
+</html>

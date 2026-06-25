@@ -1,0 +1,176 @@
+.login-page {
+
+    min-height: calc(100vh - 90px);
+    padding: 70px 110px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 70px;
+    align-items: center;
+    background:
+        radial-gradient(circle at 10% 20%, #f4e6d7 0, transparent 22%),
+        radial-gradient(circle at 90% 80%, #f5b53733 0, transparent 25%);
+
+}
+
+.sub-title {
+
+    color: #f5b537;
+    font-weight: 700;
+    font-size: 18px;
+
+}
+
+.intro-section h1 {
+
+    font-size: 56px;
+    line-height: 1.25;
+    margin: 18px 0 24px;
+
+}
+
+.desc {
+
+    width: 80%;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #7b5a3c;
+
+}
+
+.keyword-box {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 36px;
+
+}
+
+.keyword-box span {
+
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: #f4e6d7;
+    color: #58371b;
+    font-size: 15px;
+
+}
+
+.login-box {
+
+    background: white;
+    padding: 44px;
+    border-radius: 28px;
+    box-shadow: 0 18px 45px rgba(88, 55, 27, 0.14);
+
+}
+
+.login-box h2 {
+
+    font-size: 34px;
+    margin: 0 0 8px;
+
+}
+
+.login-box > p {
+
+    margin-bottom: 24px;
+    color: #a17d5f;
+    line-height: 1.6;
+
+}
+
+.message {
+
+    background: #f4e6d7;
+    color: #58371b;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+
+}
+
+form {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+form label {
+
+    margin: 14px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+
+}
+
+form input {
+
+    height: 52px;
+    border: 1px solid #af947d;
+    border-radius: 12px;
+    padding: 0 16px;
+    font-size: 15px;
+    outline: none;
+
+}
+
+form input:focus {
+
+    border-color: #f5b537;
+
+}
+
+.signup-btn {
+
+    background: #f5b537;
+    color: #58371b;
+    margin-top: 28px;
+
+}
+
+.signup-btn:hover {
+
+    background: #e5a326;
+
+}
+
+.login-btn {
+
+    background: #58371b;
+    color: white;
+    margin-top: 14px;
+
+}
+
+.login-btn:hover {
+
+    background: #3f2713;
+
+}
+
+@media (max-width: 900px) {
+
+    .login-page {
+
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+
+    }
+
+    .intro-section h1 {
+
+        font-size: 38px;
+
+    }
+
+    .desc {
+
+        width: 100%;
+
+    }
+
+}

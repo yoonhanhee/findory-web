@@ -1,0 +1,286 @@
+.home-page{
+    width:100%;
+    padding:60px 80px;
+    background:#fffdf9;
+}
+
+.home-hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:50px;
+}
+
+.sub-title{
+    color:#f5b537;
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.home-hero h1{
+    font-size:52px;
+    color:#58371b;
+    line-height:1.3;
+    margin-bottom:20px;
+}
+
+.home-desc{
+    color:#8d7058;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.hero-card{
+    width:250px;
+    background:white;
+    border-radius:28px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 12px 35px rgba(0,0,0,.06);
+}
+
+.hero-card p{
+    color:#8d7058;
+    margin-bottom:10px;
+}
+
+.hero-card strong{
+    display:block;
+    font-size:60px;
+    color:#58371b;
+}
+
+.hero-card span{
+    color:#a58a72;
+}
+
+/* Menu */
+
+.quick-menu{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-bottom:60px;
+}
+
+.menu-card{
+    background:white;
+    border-radius:24px;
+    padding:32px 24px;
+    text-decoration:none;
+    color:#58371b;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+    transition:.25s;
+}
+
+.menu-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.menu-card span{
+    display:block;
+    font-size:42px;
+}
+
+.menu-card h3{
+    margin:18px 0 10px;
+}
+
+.menu-card p{
+    color:#8d7058;
+    line-height:1.7;
+}
+
+/* Recent */
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    color:#58371b;
+}
+
+.section-title a{
+    text-decoration:none;
+    color:#f5b537;
+    font-weight:700;
+}
+
+.empty-box{
+    background:white;
+    border-radius:24px;
+    padding:45px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.empty-box a{
+    display:inline-block;
+    margin-top:20px;
+    color:#58371b;
+    font-weight:700;
+    text-decoration:none;
+}
+
+.recent-list{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.book-card{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:white;
+    border-radius:22px;
+    padding:16px;
+    min-height:195px;
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+
+.recent-list .book-card{
+    flex-direction:row;
+    text-align:left;
+}
+
+.recent-book{
+    cursor:pointer;
+    transition:.25s;
+}
+
+.recent-book:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.book-cover{
+    width:112px;
+    height:162px;
+    border-radius:16px;
+    background:#f4e6d7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:15px;
+    font-weight:800;
+    color:#58371b;
+    flex-shrink:0;
+    overflow:hidden;
+    box-shadow:0 8px 18px rgba(0,0,0,.10);
+}
+
+.book-cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:inherit;
+}
+
+.book-cover img[src="/images/default-book.png"]{
+    display:none;
+}
+
+.book-cover:has(img[src="/images/default-book.png"])::after{
+    content:"BOOK";
+}
+
+.book-info{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.book-info h3{
+    width:100%;
+    margin:0 0 8px;
+    font-size:20px;
+    color:#58371b;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.book-info p{
+    width:100%;
+    color:#8d7058;
+    margin:5px 0;
+    font-size:14px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.tag-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin:12px 0;
+    justify-content:flex-start;
+}
+
+.tag-box span{
+    background:#f4e6d7;
+    color:#58371b;
+    border-radius:999px;
+    padding:6px 10px;
+    font-size:12px;
+}
+
+.star-text{
+    color:#f5b537;
+    font-weight:700;
+    font-size:14px;
+}
+
+@media(max-width:1300px){
+
+    .recent-list{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:1000px){
+
+    .home-hero{
+        flex-direction:column;
+        gap:40px;
+        align-items:flex-start;
+    }
+
+    .quick-menu{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .home-page{
+        padding:30px;
+    }
+
+    .home-hero h1{
+        font-size:38px;
+    }
+
+    .recent-list{
+        grid-template-columns:1fr;
+    }
+
+    .book-card{
+        min-height:auto;
+    }
+
+}

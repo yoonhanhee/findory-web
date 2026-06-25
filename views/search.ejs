@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Findory | 검색</title>
+
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/search.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+
+        <a href="/home">
+            <img src="/images/logo.png" alt="Findory Logo">
+        </a>
+
+    </div>
+
+    <nav class="nav">
+
+        <a href="/home">홈</a>
+        <a href="/write">기록</a>
+        <a href="/search" class="active">검색</a>
+        <a href="/library">서재</a>
+        <a href="/logout">로그아웃</a>
+
+    </nav>
+
+</header>
+
+<main class="search-page">
+
+    <section class="search-title">
+
+        <p class="sub-title">
+
+            Findory Search
+
+        </p>
+
+        <h1>
+
+            기억을 따라<br>
+            책을 다시 찾아보세요.
+
+        </h1>
+
+        <p>
+
+            제목이 기억나지 않아도 감정, 장르, 날씨, 시간대로 찾을 수 있습니다.
+
+        </p>
+
+    </section>
+
+
+
+    <section class="search-box">
+
+        <form method="post" action="/search">
+
+            <div class="keyword-box">
+
+                <input
+                    type="text"
+                    name="keyword"
+                    value="<%= keyword %>"
+                    placeholder="책 제목, 저자, 감상평 검색">
+
+                <button type="submit">
+
+                    검색
+
+                </button>
+
+            </div>
+
+            <div class="filter-grid">
+
+                <div class="filter-item">
+
+                    <label>장르</label>
+
+                    <select name="genre">
+
+                        <option value="">전체</option>
+                        <option>판타지</option>
+                        <option>로맨스</option>
+                        <option>추리</option>
+                        <option>성장</option>
+                        <option>공포</option>
+                        <option>액션</option>
+                        <option>SF</option>
+                        <option>드라마</option>
+                        <option>코미디</option>
+                        <option>에세이</option>
+                        <option>역사</option>
+                        <option>예술</option>
+                        <option>심리</option>
+                        <option>과학</option>
+                        <option>기타</option>
+
+                    </select>
+
+                </div>
+
+                <div class="filter-item">
+
+                    <label>감정</label>
+
+                    <select name="emotion">
+
+                        <option value="">전체</option>
+                        <option>행복</option>
+                        <option>설렘</option>
+                        <option>편안</option>
+                        <option>감동</option>
+                        <option>재미</option>
+                        <option>몰입</option>
+                        <option>위로</option>
+                        <option>슬픔</option>
+                        <option>분노</option>
+                        <option>놀람</option>
+                        <option>무덤덤</option>
+                        <option>생각 많음</option>
+                        <option>긴장</option>
+                        <option>불안</option>
+                        <option>기타</option>
+
+                    </select>
+
+                </div>
+
+                <div class="filter-item">
+
+                    <label>날씨</label>
+
+                    <select name="weather">
+
+                        <option value="">전체</option>
+                        <option>맑음</option>
+                        <option>구름</option>
+                        <option>흐림</option>
+                        <option>비</option>
+                        <option>폭우</option>
+                        <option>눈</option>
+                        <option>바람</option>
+                        <option>기타</option>
+
+                    </select>
+
+                </div>
+
+                <div class="filter-item">
+
+                    <label>시간대</label>
+
+                    <select name="time">
+
+                        <option value="">전체</option>
+                        <option>새벽</option>
+                        <option>아침</option>
+                        <option>낮</option>
+                        <option>오후</option>
+                        <option>저녁</option>
+                        <option>밤</option>
+                        <option>늦은 밤</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+
+    <section class="result-section">
+
+        <h2>
+
+            검색 결과
+
+        </h2>
+
+        <% if(results.length===0){ %>
+
+            <div class="empty-box">
+
+                검색 결과가 없습니다.
+
+            </div>
+
+        <% } else { %>
+
+            <div class="result-list">
+
+                <% results.forEach(function(book){ %>
+
+                    <div
+                        class="book-card result-book"
+                        data-index="<%= user.books.indexOf(book) %>">
+
+                        <div class="book-cover">
+
+                            <img
+                                src="<%= book.coverImage ? book.coverImage : '/images/default-book.png' %>"
+                                alt="책 표지">
+
+                        </div>
+
+                        <div class="book-info">
+
+                            <h3>
+
+                                <%= book.title %>
+
+                            </h3>
+
+                            <p>
+
+                                <%= book.author %>
+
+                            </p>
+
+                            <div class="tag-box">
+
+                                <span><%= book.genre %></span>
+                                <span><%= book.emotion %></span>
+                                <span><%= book.weather %></span>
+                                <span><%= book.time %></span>
+
+                            </div>
+
+                            <div class="star">
+
+                                ⭐ <%= book.star %>
+
+                            </div>
+
+                            <p class="review">
+
+                                <%= book.review %>
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } %>
+
+    </section>
+
+</main>
+
+<script src="/js/search.js"></script>
+
+</body>
+
+</html>
